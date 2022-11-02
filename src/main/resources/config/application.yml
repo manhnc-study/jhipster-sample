@@ -69,7 +69,7 @@ management:
     export:
       # Prometheus is the default metrics backend
       prometheus:
-        enabled: true
+        enabled: false
         step: 60
     enable:
       http: true
@@ -91,6 +91,8 @@ management:
             enabled: true
 
 spring:
+  zipkin:
+    enabled: true
   application:
     name: jhipstersample
   profiles:
@@ -158,11 +160,11 @@ spring:
       client:
         provider:
           oidc:
-            issuer-uri: http://localhost:9080/realms/jhipster
+            issuer-uri: https://dev-16913778.okta.com/oauth2/default
         registration:
           oidc:
-            client-id: web_app
-            client-secret: web_app
+            client-id: 0oa709b3ildlAITWz5d7
+            client-secret: dNWwzXqLPa50jdV8uxWSPsAw4rwg8F3BQe8_iELb
             scope: openid, profile, email, offline_access # last one for refresh tokens
 
 server:
