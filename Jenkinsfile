@@ -20,18 +20,18 @@ node {
     stage('npm install') {
         sh "./gradlew npm_install -PnodeInstall --no-daemon"
     }
-    stage('Install Snyk CLI') {
-       sh """
-           curl -Lo ./snyk $(curl -s https://api.github.com/repos/snyk/snyk/releases/latest | grep "browser_download_url.*snyk-linux" | cut -d ':' -f 2,3 | tr -d \" | tr -d ' ')
-           chmod +x snyk
-       """
-    }
-    stage('Snyk test') {
-       sh './snyk test --all-projects'
-    }
-    stage('Snyk monitor') {
-       sh './snyk monitor --all-projects'
-    }
+//     stage('Install Snyk CLI') {
+//        sh """
+//            curl -Lo ./snyk $(curl -s https://api.github.com/repos/snyk/snyk/releases/latest | grep "browser_download_url.*snyk-linux" | cut -d ':' -f 2,3 | tr -d \" | tr -d ' ')
+//            chmod +x snyk
+//        """
+//     }
+//     stage('Snyk test') {
+//        sh './snyk test --all-projects'
+//     }
+//     stage('Snyk monitor') {
+//        sh './snyk monitor --all-projects'
+//     }
     stage('backend tests') {
         try {
             sh "./gradlew test integrationTest -PnodeInstall --no-daemon"
